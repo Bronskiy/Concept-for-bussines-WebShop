@@ -4,8 +4,11 @@
             <div class="col-lg-12">
                 <div class="breadcrumbs">
                     <ul>
-                        <li class="home"><a href="index.html">Home</a><span>/ </span></li>
-                        <li><strong>Product Details</strong></li>
+                      <li class="home"><a href="/">Home</a><span>/ </span></li>
+                        <li><a href="#">Company or Project</a><span>/ </span></li>
+                        @isset($ArtikelData->artikel_name)
+                        <li><strong>{{ $ArtikelData->artikel_name }}</strong></li>
+                        @endisset
                     </ul>
                 </div>
             </div>

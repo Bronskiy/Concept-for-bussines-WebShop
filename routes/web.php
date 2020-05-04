@@ -12,10 +12,26 @@
 Route::get('/', 'OnePageController@getHome');
 
 Route::get('/search', 'ProductsController@search');
-Route::get('/products', 'ProductsController@getProducts');
-Route::get('/products/{name?}', [
+// Route::get('/products', 'ProductsController@getProducts');
+Route::get('/product/{name?}', [
 	'uses' => 'ProductsController@getProduct'
 ]);
+
+Route::get('exportUsers', 'ImportExportController@exportUsers')->name('exportUsers');
+Route::post('importUsers', 'ImportExportController@importUsers')->name('importUsers');
+
+Route::get('exportAdressen', 'ImportExportController@exportAdressen')->name('exportAdressen');
+Route::post('importAdressen', 'ImportExportController@importAdressen')->name('importAdressen');
+
+Route::get('exportArtikel', 'ImportExportController@exportArtikel')->name('exportArtikel');
+Route::post('importArtikel', 'ImportExportController@importArtikel')->name('importArtikel');
+
+Route::get('exportPartlist', 'ImportExportController@exportPartlist')->name('exportPartlist');
+Route::post('importPartlist', 'ImportExportController@importPartlist')->name('importPartlist');
+
+Route::get('exportProjekt', 'ImportExportController@exportProjekt')->name('exportProjekt');
+Route::post('importProjekt', 'ImportExportController@importProjekt')->name('importProjekt');
+// Route::get('importExportView', 'ImportExportController@importExportView');
 
 // Route::get('/pricing', 'OnePageController@getPricing');
 // Route::get('/how-it-works', 'OnePageController@getHowItWorks');
@@ -64,3 +80,7 @@ Route::get('/companies/{name?}', [
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
